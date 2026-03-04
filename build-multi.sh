@@ -246,7 +246,7 @@ ok "Output directory: $(realpath "$OUTPUT_DIR")"
 # ── Helper: load a tar and return the image name Docker assigned ──────────────
 load_tar_get_name() {
   local tar_path="$1"
-  docker load -i "$tar_path" 2>&1 | grep "Loaded image" | sed 's/Loaded image[s]*: //'
+  docker load -i "$tar_path" 2>&1 | grep "Loaded image" | head -n1 | sed 's/Loaded image[s]*: //'
 }
 
 # ── Helper: extract the component name from an image reference ────────────────
