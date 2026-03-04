@@ -18,5 +18,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Run build script
         run: ./build-multi.sh v1.32.13 --golang-version 1.25.0 --registry ghcr.io/it-compiles-lets-sell-it/k8s --arch amd64 --push
