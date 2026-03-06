@@ -27,3 +27,9 @@ jobs:
 
       - name: Run build script
         run: ./build-multi.sh v1.32.13 --golang-version 1.25.0 --registry ghcr.io/it-compiles-lets-sell-it/k8s --arch amd64 --push
+
+      - name: Build kubelet
+        run: ./build-multi.sh --release-ref v0.17.10
+
+      - name: Upload deb package
+        run: ls *.deb
