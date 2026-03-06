@@ -159,7 +159,7 @@ file "$KUBELET_BINARY" | grep -q ELF || {
 
 # ── step 2: fetch upstream template files ────────────────────────────────────
 WORK_DIR="$(mktemp -d)"
-trap 'rm -rf "$WORK_DIR"' EXIT
+trap 'sudo rm -rf "$WORK_DIR"' EXIT
 PKG_ROOT="${WORK_DIR}/pkg"
 TMPL_DIR="${WORK_DIR}/templates"
 mkdir -p "$TMPL_DIR"
